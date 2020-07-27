@@ -53,8 +53,11 @@ export class GridGallery extends React.Component<GridGalleryProps, GridGallerySt
         return photos.map(photo => {
             const img = new Image();
             img.src = photo;
+
+            // Sizes logic is temporary. Will change based on data received by server.
             const imgWidth = Math.random() * (2000 - 400) + 400;
             const imgHeight = Math.random() * (2000 - 400) + 400;
+            
             const width = this.dimensionToPhotoSize(imgWidth);
             const height = this.dimensionToPhotoSize(imgHeight);
 
