@@ -9,4 +9,3 @@ mongoose
   )
   .then(() => console.log('Succesfully connected to the DB through the power of magic...'))
   .catch(console.error);
-  
