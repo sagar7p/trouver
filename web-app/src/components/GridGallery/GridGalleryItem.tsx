@@ -1,6 +1,6 @@
 import React from 'react';
 import { PhotoObject, PhotoSize } from './GridGallery';
-import '../styles/grid-gallery.css';
+import '../../styles/grid-gallery.css';
 
 export interface GridGalleryItemProps {
     photoObject: PhotoObject;

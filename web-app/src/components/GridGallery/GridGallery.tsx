@@ -1,7 +1,7 @@
 import React from 'react';
 import { GridGalleryItem } from './GridGalleryItem';
 
-import '../styles/grid-gallery.css';
+import '../../styles/grid-gallery.css';
 
 export enum PhotoSize {
     Small,
