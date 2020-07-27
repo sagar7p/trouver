@@ -1,5 +1,5 @@
 {
-  "name": "backend",
+  "name": "trouver-backend",
   "version": "1.0.0",
   "description": "Backend for the Trouver app",
   "main": "server.js",
