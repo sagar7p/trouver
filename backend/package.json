@@ -1,0 +1,17 @@
+{
+  "name": "trouver-backend",
+  "version": "1.0.0",
+  "description": "Backend for the Trouver app",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server"
+  },
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "prettier": "2.0.5"
+  }
+}
