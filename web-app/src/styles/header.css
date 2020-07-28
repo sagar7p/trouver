@@ -1,5 +1,6 @@
 .header-container {
-    text-align: left;
+    padding-left: 10%;
+    padding-right: 10%;
 }
 
 button {
@@ -23,4 +24,6 @@ button:hover {
 .header-title {
     display: flex;
     justify-content: space-between;
+    padding-left: 10%;
+    padding-right: 10%;
 }

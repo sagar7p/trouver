@@ -24,7 +24,7 @@ class Header extends React.Component<HeaderProps> {
                         <button><IoMdPerson /></button>
                     </div>
                 </div>
-                <div style={{textAlign:"left"}}>
+                <div style={{textAlign:"left", paddingLeft:"10%"}}>
                     <button><IoIosAddCircleOutline /></button>
                     <button onClick={() => this.props.selectPage(Pages.GridView)}><BsGrid /></button>
                     <button onClick={() => this.props.selectPage(Pages.MapView)}><IoIosGlobe /></button>

@@ -5,6 +5,8 @@
     grid-gap: 10px;
     grid-auto-flow: dense;
     text-align: center;
+    padding-left: 10%;
+    padding-right: 10%;
 }
 
 .gallery-item {
