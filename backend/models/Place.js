@@ -1,12 +1,18 @@
 const mongoose = require('mongoose');
 
 const PlaceSchema = mongoose.Schema({
+    userId: String,
     name: String,
-    imageUrl: [String],
+    dateCreated: String,
+    image: {
+        url: String,
+        height: Number,
+        width: Number
+    },
     location: {
         type: {
-          type: String, // Don't do `{ location: { type: String } }`
-          enum: ['Point'], // 'location.type' must be 'Point'
+          type: String,
+          enum: ['Point'],
           required: true
         },
         coordinates: {
