@@ -2,16 +2,22 @@ import React, { Component, RefObject } from "react"; // let's also import Compon
 import "./Popup.scss";
 
 interface Place {
-  userId: string;
   name: string;
-  lat: number;
-  long: number;
-  imageUrl: string;
-  imageHeight: number;
-  imageWidth: number;
+  userId: string;
+  image: {
+    url: string;
+    height: number;
+    width: number;
+  };
+  coordinates: {
+    latitude: number;
+    longitude: number;
+  };
 }
+
 interface FormProps {
   imageUrl: string;
+  userId: string;
 }
 
 interface FormState {
@@ -31,8 +37,8 @@ export default class Popup extends Component<FormProps, FormState> {
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
-        <h1 id="title">Save your location</h1>
-        <p id="subtitle">Enter this location:</p>
+        <h1 id="title">Welcome to Trouver</h1>
+        <p id="subtitle">Save this location:</p>
         <SearchBar onPlaceLoaded={this.onPlaceLoaded.bind(this)} />
         <img
           src={this.props.imageUrl}
@@ -48,18 +54,25 @@ export default class Popup extends Component<FormProps, FormState> {
   handleSubmit(event) {
     event.preventDefault();
     const { place, imgHeight, imgWidth } = this.state;
+    const { imageUrl, userId } = this.props;
+
     const payload: Place = {
-      userId: "1",
       name: place.name,
-      lat: place.geometry.location.lat(),
-      long: place.geometry.location.lng(),
-      imageUrl: this.props.imageUrl,
-      imageHeight: imgHeight,
-      imageWidth: imgWidth,
+      userId: userId,
+      image: {
+        url: imageUrl,
+        height: imgHeight,
+        width: imgWidth,
+      },
+      coordinates: {
+        latitude: place.geometry.location.lat(),
+        longitude: place.geometry.location.lng(),
+      },
     };
 
     console.log("submitted " + JSON.stringify(payload));
 
+    alert("Successfully submitted");
     return false;
   }
 

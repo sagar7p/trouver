@@ -1,7 +1,9 @@
 {
   "manifest_version": 2,
 
-  "name": "Trouver App",
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAhdibisj9c8QlSuveUvK6GEqYoiHF+WVsAfisv9mAfp9mOUTuMfU9tvmYagALAPsADwDjwJusZCPlykhuI/1WNEJC606lMEzitXnYGy1d6PRJhb2YOlNy3D2elDbMbpP5Sv9Vl1c23mqEi2ppdxkS53P4vgkGVgKTppfHtZ76voDsoUvl7G0+O+De8fIoo5vRRw4NVTpSAk7ysJKhYnhjUWi8/cucYvGB2tK+Z/RaU2qFlfREXWaUoM8cTGMRMM7zIKMKGniSihyOeMkdH8l+V+1Dzx+HvdM9ovcV4M1+rY4aPBKAOCLU6Y/OmhD0wJcYtnfIz8Rm3Ynz7h7T6DwYnQIDAQAB",
+
+  "name": "Trouver",
   "description": "The ultimate planning and aggregation tool to find your next adventure",
   "version": "1.0.0",
 
@@ -15,12 +17,17 @@
     "persistent": true
   },
 
+  "oauth2": {
+    "client_id": "614597076585-rdh6u0ub8kaamop2p3ekkr87ql1td6bq.apps.googleusercontent.com",
+    "scopes": ["profile", "https://www.googleapis.com/auth/userinfo.email"]
+  },
+
   "icons": {
     "16": "icon16.png",
     "48": "icon48.png",
     "128": "icon128.png"
   },
 
-  "permissions": ["contextMenus", "storage"],
+  "permissions": ["contextMenus", "storage", "identity", "identity.email"],
   "content_security_policy": "script-src 'self' https://maps.googleapis.com; object-src 'self'"
 }
