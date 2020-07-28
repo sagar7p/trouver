@@ -16,10 +16,10 @@ class Header extends React.Component<HeaderProps> {
         return (
             <div className="header-conatiner">
                 <div className="header-title">
-                    <div className="left-block">
+                    <div>
                         <h1>Trouver</h1>
                     </div>
-                    <div className="right-block">
+                    <div style={{paddingTop: "5%"}}>
                         <button><IoMdPerson /></button>
                     </div>
                 </div>

@@ -21,13 +21,6 @@ button:hover {
 }
 
 .header-title {
-    text-align: justify;
-}
-
-.left-block {
-    display: inline-block;
-}
-
-.right-block {
-    display: inline-block;
+    display: flex;
+    justify-content: space-between;
 }
