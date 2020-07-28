@@ -8,18 +8,24 @@ import { Pages } from './reducers/page-reducer';
 
 class App extends React.Component {
   render() {
+    let view;
+    switch(this.props.currentPage) {
+      case Pages.GridView:
+        view = <GridGalleryContainer />;
+        break;
+      case Pages.MapView:
+        view = <MapView />;
+        break;
+      default:
+        view = <GridGalleryContainer />;
+    }
+
     return (
       <div className="App">
         <header className="App-header">
           <div>
             <Header />
-            {
-              this.props.currentPage === Pages.GridView ? (
-                <GridGalleryContainer />
-              ) : (
-                <MapView />
-              )
-            }
+            {view}
           </div>
         </header>
       </div>
