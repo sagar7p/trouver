@@ -34,5 +34,4 @@ function addPlace(image: chrome.contextMenus.OnClickData) {
       top: top,
     });
   });
-  
 }
