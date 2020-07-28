@@ -97,19 +97,19 @@ interface SearchBarProps {
 }
 
 class SearchBar extends React.Component<SearchBarProps> {
-  public autocompleteInput: RefObject<HTMLInputElement>;
+  public autoCompleteInput: RefObject<HTMLInputElement>;
   public autocomplete: google.maps.places.Autocomplete;
 
   constructor(props) {
     super(props);
-    this.autocompleteInput = React.createRef();
+    this.autoCompleteInput = React.createRef();
     this.autocomplete = null;
     this.handlePlaceChanged = this.handlePlaceChanged.bind(this);
   }
 
   componentDidMount() {
     this.autocomplete = new google.maps.places.Autocomplete(
-      this.autocompleteInput.current,
+      this.autoCompleteInput.current,
       {}
     );
 
@@ -124,7 +124,7 @@ class SearchBar extends React.Component<SearchBarProps> {
   render() {
     return (
       <input
-        ref={this.autocompleteInput}
+        ref={this.autoCompleteInput}
         id="autocomplete"
         placeholder="Enter your address"
         type="Enter a location"
