@@ -14,7 +14,7 @@ router.get('/', (req, res, next) => {
 
 /**
  * URL: localhost:5001/api/places/add
- * Sample payload: 
+ * Sample payload as part of body: 
 {
     "name": "hello",
     "userId": "mailId",
