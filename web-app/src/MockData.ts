@@ -11,7 +11,7 @@ const randomElevation = (): number => {
 export const places: Place[] = [
     {
         location: {
-            coordinates: [125.6, 10.1],
+            coordinates: [-25.6, 10.1],
             type: 'Point'
         },
         id: 'place1',
@@ -24,7 +24,7 @@ export const places: Place[] = [
     },
     {
         location: {
-            coordinates: [248.1, 51.2],
+            coordinates: [-48.1, 51.2],
             type: 'Point'
         },
         id: 'place1',
@@ -37,7 +37,7 @@ export const places: Place[] = [
     },
     {
         location: {
-            coordinates: [330.1, 99.2],
+            coordinates: [88, 99.2],
             type: 'Point'
         },
         id: 'place1',
@@ -63,7 +63,7 @@ export const places: Place[] = [
     },
     {
         location: {
-            coordinates: [181.6, 22.1],
+            coordinates: [2, 22.1],
             type: 'Point'
         },
         id: 'place1',
@@ -76,7 +76,7 @@ export const places: Place[] = [
     },
     {
         location: {
-            coordinates: [290, 66.1],
+            coordinates: [-20, 66.1],
             type: 'Point'
         },
         id: 'place1',
@@ -89,7 +89,7 @@ export const places: Place[] = [
     },
     {
         location: {
-            coordinates: [73.6, 212.1],
+            coordinates: [73.6, 113],
             type: 'Point'
         },
         id: 'place1',
@@ -102,7 +102,7 @@ export const places: Place[] = [
     },
     {
         location: {
-            coordinates: [40.6, 300.1],
+            coordinates: [40.6, -77],
             type: 'Point'
         },
         id: 'place1',
@@ -115,7 +115,7 @@ export const places: Place[] = [
     },
     {
         location: {
-            coordinates: [15.6, 380.1],
+            coordinates: [15.6, 22],
             type: 'Point'
         },
         id: 'place1',
