@@ -1,0 +1,24 @@
+.header-container {
+    text-align: left;
+}
+
+button {
+    background-color: white;
+    border: none;
+    color: darkgray;
+    padding: 12px 12px;
+    font-size: 32px;
+    cursor: pointer;
+}
+
+.header-title {
+    text-align: justify;
+}
+
+.left-block {
+    display: inline-block;
+}
+
+.right-block {
+    display: inline-block;
+}

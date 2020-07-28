@@ -7,8 +7,18 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <Header />
-        <GridGalleryContainer />
+        {/* <table style={{textAlign: "left"}}>
+          <tr>
+            <Header />
+          </tr>
+          <tr>
+            <GridGalleryContainer />
+          </tr>
+        </table> */}
+        <div>
+          <Header />
+          <GridGalleryContainer />
+        </div>
       </header>
     </div>
   );

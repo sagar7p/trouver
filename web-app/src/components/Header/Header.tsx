@@ -1,20 +1,24 @@
 import React from 'react';
+import {IoIosAddCircleOutline, IoIosGrid, IoIosGlobe, IoMdPerson} from 'react-icons/io';
 
-import { ReactComponent as GridView } from '../../assets/grid-outline.svg';
-import { ReactComponent as GlobeView } from '../../assets/globe-outline.svg';
-import { ReactComponent as AddView } from '../../assets/add-circle-outline.svg';
-import { ReactComponent as ProfileView } from '../../assets/person-circle-outline.svg';
+import '../../styles/header.css';
 
 export class Header extends React.Component {
     render() {
         return (
-            <div>
-                <p>Trouver</p>
-                <button><ProfileView /></button>
-                <div>
-                    <button><AddView /></button>
-                    <button><GridView /></button>
-                    <button><GlobeView /></button>
+            <div className="header-conatiner">
+                <div className="header-title">
+                    <div className="left-block">
+                        <h1>Trouver</h1>
+                    </div>
+                    <div className="right-block">
+                        <button><IoMdPerson /></button>
+                    </div>
+                </div>
+                <div style={{textAlign:"left"}}>
+                    <button><IoIosAddCircleOutline /></button>
+                    <button><IoIosGrid /></button>
+                    <button><IoIosGlobe /></button>
                 </div>
             </div>
         );
