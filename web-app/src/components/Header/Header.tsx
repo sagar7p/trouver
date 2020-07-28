@@ -1,5 +1,6 @@
 import React from 'react';
-import {IoIosAddCircleOutline, IoIosGrid, IoIosGlobe, IoMdPerson} from 'react-icons/io';
+import { IoIosAddCircleOutline, IoIosGlobe, IoMdPerson } from 'react-icons/io';
+import { BsGrid } from 'react-icons/bs';
 import { selectPage } from '../../actions';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
@@ -25,7 +26,7 @@ class Header extends React.Component<HeaderProps> {
                 </div>
                 <div style={{textAlign:"left"}}>
                     <button><IoIosAddCircleOutline /></button>
-                    <button onClick={() => this.props.selectPage(Pages.GridView)}><IoIosGrid /></button>
+                    <button onClick={() => this.props.selectPage(Pages.GridView)}><BsGrid /></button>
                     <button onClick={() => this.props.selectPage(Pages.MapView)}><IoIosGlobe /></button>
                 </div>
             </div>
