@@ -36,7 +36,7 @@ export class GridGalleryItem extends React.Component<GridGalleryItemProps, GridG
                         <div className="image">
                             <img src={this.props.photoObject.url} alt="nature" />
                         </div>
-                        <div className="text">Nature</div>
+                        <div className="text">{this.props.photoObject.name}</div>
                     </div>
                 </div>
             );

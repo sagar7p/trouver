@@ -4,19 +4,23 @@ import { GridGalleryContainer } from './components/GridGallery/GridGalleryContai
 import { Header, currentPage } from './components/Header/Header';
 import { MapViewContainer } from './components/MapView/MapViewContainer';
 import { PageType } from './models/PageType';
+import { Place } from './models/Place';
+import { places } from './MockData';
 
 export interface AppProps {
 }
 
 export interface AppState {
   currentPage: PageType;
+  placeObjects: Place[];
 }
 
 class App extends React.Component<AppProps, AppState> {
   constructor(props: AppProps) {
     super(props);
     this.state = {
-      currentPage: PageType.GridView
+      currentPage: PageType.GridView,
+      placeObjects: this.getPlaces() 
     };
   }
 
@@ -33,11 +37,11 @@ class App extends React.Component<AppProps, AppState> {
     const page = (currentPage: PageType) => {
       switch(currentPage) {
         case PageType.GridView:
-          return <GridGalleryContainer />;
+          return <GridGalleryContainer places={this.state.placeObjects}/>;
         case PageType.MapView:
           return <MapViewContainer />;
         default:
-          return <GridGalleryContainer />
+          return <GridGalleryContainer places={this.state.placeObjects}/>;
       }
     }
 
@@ -51,6 +55,10 @@ class App extends React.Component<AppProps, AppState> {
         </header>
       </div>
     );
+  }
+
+  private getPlaces() {
+    return places;
   }
 }
 

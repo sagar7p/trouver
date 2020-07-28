@@ -67,7 +67,7 @@ export const places: Place[] = [
             type: 'Point'
         },
         id: 'place1',
-        name: 'Zio National Park',
+        name: 'Zion National Park',
         dataCreated: 'Tue Jul 28 2020 13:16:22 GMT-0700 (Pacific Daylight Time)',
         imageUrl: 'https://s27135.pcdn.co/wp-content/uploads/2020/05/Best-hikes-in-Zion-National-Park.jpg.optimal.jpg',
         weather: '70',

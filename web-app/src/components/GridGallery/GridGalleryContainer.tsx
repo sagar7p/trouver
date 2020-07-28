@@ -1,11 +1,17 @@
 import React from 'react';
-import { photos } from '../../photos';
 import { GridGallery } from './GridGallery';
+import { Place } from '../../models/Place';
 
-export class GridGalleryContainer extends React.Component {
+export interface GridGalleryContainerProps {
+    places: Place[];
+}
+
+export class GridGalleryContainer extends React.Component<GridGalleryContainerProps> {
     render() {
         return (
-            <GridGallery photos={photos} />
+            <GridGallery places={this.props.places} />
         );
     }
+
+
 }

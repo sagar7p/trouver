@@ -2,6 +2,7 @@ import React from 'react';
 import { GridGalleryItem } from './GridGalleryItem';
 
 import '../../styles/grid-gallery.css';
+import { Place } from '../../models/Place';
 
 export enum PhotoSize {
     Small,
@@ -13,10 +14,11 @@ export interface PhotoObject {
     width: PhotoSize;
     height: PhotoSize;
     url: string;
+    name: string;
 }
 
 export interface GridGalleryProps {
-    photos: string[];
+    places: Place[];
 }
 
 export interface GridGalleryState {
@@ -30,7 +32,7 @@ export class GridGallery extends React.Component<GridGalleryProps, GridGallerySt
     }
 
     componentDidMount() {
-        const photoObjects = this.photoStringToPhotoObject(this.props.photos);
+        const photoObjects = this.photoStringToPhotoObject(this.props.places);
         this.setState({
             ...this.state,
             photoObjects
@@ -49,10 +51,10 @@ export class GridGallery extends React.Component<GridGalleryProps, GridGallerySt
         );
     }
 
-    private photoStringToPhotoObject(photos: string[]): PhotoObject[] {
-        return photos.map(photo => {
+    private photoStringToPhotoObject(places: Place[]): PhotoObject[] {
+        return places.map(place => {
             const img = new Image();
-            img.src = photo;
+            img.src = place.imageUrl;
 
             // Sizes logic is temporary. Will change based on data received by server.
             const imgWidth = Math.random() * (2000 - 400) + 400;
@@ -64,7 +66,8 @@ export class GridGallery extends React.Component<GridGalleryProps, GridGallerySt
             return {
                 width,
                 height,
-                url: photo
+                url: place.imageUrl,
+                name: place.name
             };
         });
     }
