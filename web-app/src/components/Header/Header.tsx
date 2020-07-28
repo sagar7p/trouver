@@ -1,16 +1,16 @@
 import React from 'react';
 import { IoIosAddCircleOutline, IoIosGlobe, IoMdPerson } from 'react-icons/io';
 import { BsGrid } from 'react-icons/bs';
-import { selectPage } from '../../actions';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
+import { BehaviorSubject } from 'rxjs';
+import { PageType } from '../../models/PageType';
 
 import '../../styles/header.css';
-import { Pages } from '../../reducers/page-reducer';
 
 export interface HeaderProps {
-    selectPage(page: Pages): void;
+    
 }
+
+const currentPage = new BehaviorSubject(PageType.GridView);
 
 class Header extends React.Component<HeaderProps> {
     render() {
@@ -26,20 +26,19 @@ class Header extends React.Component<HeaderProps> {
                 </div>
                 <div style={{textAlign:"left", paddingLeft:"10%"}}>
                     <button><IoIosAddCircleOutline /></button>
-                    <button onClick={() => this.props.selectPage(Pages.GridView)}><BsGrid /></button>
-                    <button onClick={() => this.props.selectPage(Pages.MapView)}><IoIosGlobe /></button>
+                    <button onClick={() => this.changePage(PageType.GridView)}><BsGrid /></button>
+                    <button onClick={() => this.changePage(PageType.MapView)}><IoIosGlobe /></button>
                 </div>
             </div>
         );
     }
+
+    private changePage(newPage: PageType) {
+        currentPage.next(newPage);
+    }
 }
 
-function mapStateToProps(_state: any) {
-    return {};
-}
-
-function matchDispatchToProps(dispatch: any) {
-    return bindActionCreators({selectPage: selectPage}, dispatch);
-}
-
-export default connect(mapStateToProps, matchDispatchToProps)(Header);
+export {
+    Header,
+    currentPage
+};
