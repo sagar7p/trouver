@@ -19,12 +19,12 @@ chrome.contextMenus.create({
 function addPlace(image: chrome.contextMenus.OnClickData) {
   const imageUrl = image.srcUrl;
   console.log("clicked image");
-  chrome.storage.sync.set({imageUrl: imageUrl}, function() {
-    console.log('Value is set to ' + imageUrl);
-    var w = 700;
-    var h = 700;
-    var left = (screen.width/2)-(w/2);
-    var top = (screen.height/2)-(h/2); 
+  chrome.storage.sync.set({ imageUrl: imageUrl }, function () {
+    console.log("Value is set to " + imageUrl);
+    const w = 700;
+    const h = 700;
+    const left = screen.width / 2 - w / 2;
+    const top = screen.height / 2 - h / 2;
     chrome.windows.create({
       url: chrome.runtime.getURL("popup.html"),
       type: "popup",
