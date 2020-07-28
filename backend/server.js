@@ -7,6 +7,9 @@ const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
+// Mount routes
+app.use('/api/places/', require('./routes/places-route'));
+
 app.get('/', (req, res) => {
     res.sendFile('index.html', { root: __dirname });
 });
