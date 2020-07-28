@@ -1,27 +1,36 @@
 import React from 'react';
 import './App.css';
 import { GridGalleryContainer } from './components/GridGallery/GridGalleryContainer';
-import { Header } from './components/Header/Header';
+import Header from './components/Header/Header';
+import { connect } from 'react-redux';
+import { MapView } from './components/MapView/MapView';
+import { Pages } from './reducers/page-reducer';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        {/* <table style={{textAlign: "left"}}>
-          <tr>
+class App extends React.Component {
+  render() {
+    return (
+      <div className="App">
+        <header className="App-header">
+          <div>
             <Header />
-          </tr>
-          <tr>
-            <GridGalleryContainer />
-          </tr>
-        </table> */}
-        <div>
-          <Header />
-          <GridGalleryContainer />
-        </div>
-      </header>
-    </div>
-  );
+            {
+              this.props.currentPage === Pages.GridView ? (
+                <GridGalleryContainer />
+              ) : (
+                <MapView />
+              )
+            }
+          </div>
+        </header>
+      </div>
+    );
+  }
 }
 
-export default App;
+function mapStateToProps(state) {
+  return {
+    currentPage: state.currentPage
+  }
+}
+
+export default connect(mapStateToProps)(App);
