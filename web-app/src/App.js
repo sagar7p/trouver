@@ -3,7 +3,7 @@ import './App.css';
 import { GridGalleryContainer } from './components/GridGallery/GridGalleryContainer';
 import Header from './components/Header/Header';
 import { connect } from 'react-redux';
-import { MapView } from './components/MapView/MapView';
+import { MapViewContainer } from './components/MapView/MapViewContainer';
 import { Pages } from './reducers/page-reducer';
 
 class App extends React.Component {
@@ -14,7 +14,7 @@ class App extends React.Component {
         view = <GridGalleryContainer />;
         break;
       case Pages.MapView:
-        view = <MapView />;
+        view = <MapViewContainer />;
         break;
       default:
         view = <GridGalleryContainer />;
