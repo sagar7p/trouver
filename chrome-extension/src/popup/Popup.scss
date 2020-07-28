@@ -4,11 +4,11 @@ $background-color: black;
 // Chrome applies an 8px margin by default (gross).
 body {
   margin: 0px;
+  background-color: $background-color;
 }
 
 #popup {
   align-items: center;
-  background-color: $background-color;
   color: $primary-color;
   display: flex;
   font-size: 20px;
@@ -35,4 +35,10 @@ body {
   width: 90%;
   height: auto;
   padding: 5%;
+}
+
+#submit {
+  text-align: center;
+  display: block;
+  margin: 0 auto;
 }
