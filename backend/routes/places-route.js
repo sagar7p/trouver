@@ -10,7 +10,7 @@ router.get("/", cors(), (req, res, next) => {
   const { userId } = req.query;
   Place.find({ userId: userId }, (err, places) => {
     if (err) next(err);
-    else res.json(places);
+    else res.json(places.sort((a, b) => a.dateCreated < b.dateCreated));
   });
 });
 router.options("/", cors());
