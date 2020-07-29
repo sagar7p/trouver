@@ -8,6 +8,7 @@ import { Place } from './models/Place';
 import { places } from './MockData';
 import { BehaviorSubject } from 'rxjs';
 import { DetailModal } from './components/DetailedView/DetailModal';
+import { PlacesService } from './services/places.service';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -19,6 +20,12 @@ export interface AppState {
   placeObjects: Place[];
   showDetailView: boolean;
   detailViewPlace: Place | undefined;
+  isLoading: boolean;
+}
+
+export interface LoadPlacesData {
+  completed: boolean;
+  placesArray: Place[];
 }
 
 export interface DetailViewData {
@@ -31,18 +38,24 @@ export const enableDetailView = new BehaviorSubject<DetailViewData>({
   detailViewPlace: undefined
 });
 
+export const loadedPlaces = new BehaviorSubject<LoadPlacesData>({
+  completed: false,
+  placesArray: []
+});
+
 class App extends React.Component<AppProps, AppState> {
   constructor(props: AppProps) {
     super(props);
     this.state = {
       currentPage: PageType.GridView,
-      placeObjects: this.getPlaces(),
+      placeObjects: [],
       showDetailView: false,
-      detailViewPlace: undefined
+      detailViewPlace: undefined,
+      isLoading: true
     };
   }
 
-  componentDidMount() {
+  async componentDidMount(): Promise<void> {
     currentPage.subscribe((page: PageType) => {
       this.setState({
         ...this.state,
@@ -57,33 +70,45 @@ class App extends React.Component<AppProps, AppState> {
         detailViewPlace: data.detailViewPlace
       })
     });
+
+    loadedPlaces.subscribe((loadState: LoadPlacesData) => {
+      this.setState({
+        ...this.state,
+        isLoading: !loadState.completed,
+        placeObjects: loadState.placesArray
+      })
+    })
+
+    await PlacesService.getPlaces();
   }
 
   render() {
     const page = (currentPage: PageType) => {
-      switch(currentPage) {
+      switch (currentPage) {
         case PageType.GridView:
-          return <GridGalleryContainer places={this.state.placeObjects}/>;
+          return <GridGalleryContainer places={this.state.placeObjects} />;
         case PageType.MapView:
           return (
             <div>
-              <MapViewContainer />;
+              <MapViewContainer places={this.state.placeObjects} />;
             </div>
           );
         default:
-          return <GridGalleryContainer places={this.state.placeObjects}/>;
+          return <GridGalleryContainer places={this.state.placeObjects} />;
       }
     }
 
     return (
       <div className="App">
         <header className="App-header">
-          <div>
-            <Header />
-            { page(this.state.currentPage) }
-            <DetailModal place={this.state.detailViewPlace} showModal={this.state.showDetailView} />
-            {/* { this.state.showDetailView ? <DetailView place={this.state.detailViewPlace}/> : <div></div>} */}
-          </div>
+          {
+            this.state.isLoading ? <div>Loading...</div>
+              : <div>
+                <Header />
+                {page(this.state.currentPage)}
+                <DetailModal place={this.state.detailViewPlace} showModal={this.state.showDetailView} />
+              </div>
+          }
         </header>
       </div>
     );
@@ -92,8 +117,6 @@ class App extends React.Component<AppProps, AppState> {
   private getPlaces() {
     return places;
   }
-
-
 }
 
 export default App;
