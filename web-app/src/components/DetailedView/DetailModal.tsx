@@ -25,7 +25,11 @@ export class DetailModal extends React.Component<DetailModalProps> {
                             <img src={place.image.url} alt={place.id}></img>
                         </div>
                         <div className="map-block">
-                            <MapView myPlaces={[place]}/>
+                            <MapView
+                                myPlaces={[place]}
+                                defaultCenter={{lat: place.location.coordinates[0], lng: place.location.coordinates[1]}}
+                                defaultZoom={5}
+                            />
                         </div>
                         <div className="details">
                             {

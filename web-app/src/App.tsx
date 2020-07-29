@@ -65,7 +65,11 @@ class App extends React.Component<AppProps, AppState> {
         case PageType.GridView:
           return <GridGalleryContainer places={this.state.placeObjects}/>;
         case PageType.MapView:
-          return <MapViewContainer />;
+          return (
+            <div>
+              <MapViewContainer />;
+            </div>
+          );
         default:
           return <GridGalleryContainer places={this.state.placeObjects}/>;
       }
@@ -74,7 +78,7 @@ class App extends React.Component<AppProps, AppState> {
     return (
       <div className="App">
         <header className="App-header">
-          <div style={{width: "auto"}}>
+          <div>
             <Header />
             { page(this.state.currentPage) }
             <DetailModal place={this.state.detailViewPlace} showModal={this.state.showDetailView} />

@@ -1,6 +1,25 @@
 .header-container {
-    padding-left: 10%;
-    padding-right: 10%;
+    padding-left: auto;
+}
+
+.header-title {
+    display: flex;
+    justify-content: space-between;
+}
+
+.toolbar {
+    text-align: left;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.image-box {
+    text-align: left;
+}
+
+.logo {
+    width: 20%;
+    height: 100%;
 }
 
 button {
@@ -19,11 +38,4 @@ button {
 
 button:hover {
     opacity: 1;
-}
-
-.header-title {
-    display: flex;
-    justify-content: space-between;
-    padding-left: 10%;
-    padding-right: 10%;
 }

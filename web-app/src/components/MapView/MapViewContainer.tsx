@@ -9,9 +9,7 @@ export class MapViewContainer extends React.Component {
     render() {
         return (
             <div className="map-container">
-                <div className="box">
-                    <MapView myPlaces={places}/>
-                </div>
+                <MapView myPlaces={places}/>
             </div>
         );
     }

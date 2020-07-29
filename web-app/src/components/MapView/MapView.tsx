@@ -3,19 +3,26 @@ import { GoogleMap, Marker, withGoogleMap, withScriptjs } from 'react-google-map
 import { Place } from '../../models/Place';
 import { enableDetailView } from '../../App';
 
+export interface DefaultCenter {
+    lat: number,
+    lng: number
+}
+
 export interface MapViewProps {
     myPlaces: Place[];
     googleMapURL: string;
     loadingElement: JSX.Element;
     containerElement: JSX.Element;
     mapElement: JSX.Element;
+    defaultCenter?: DefaultCenter;
+    defaultZoom?: number;
 }
 
 function Map(props: MapViewProps) {
     return (
         <GoogleMap
-            defaultZoom={3}
-            defaultCenter={{ lat: 45.4, lng: -75.7 }}
+            defaultZoom={props.defaultZoom}
+            defaultCenter={props.defaultCenter}
         >
             {
                 props.myPlaces.map((p) => (
@@ -46,7 +53,10 @@ const wrappedGoogleMap = withGoogleMap(Map);
 const WrappedMap = withScriptjs<MapViewProps>(wrappedGoogleMap);
 
 export default function MapView(props: Omit<MapViewProps,'googleMapURL' | 'loadingElement' | 'containerElement' | 'mapElement'>) {
-    const {myPlaces} = props;
+    const { myPlaces } = props;
+    const defaultCenter = props.defaultCenter ?? { lat: 45.4, lng: -75.7 };
+    const defaultZoom = props.defaultZoom ?? 3;
+
     return (
         <div>
             <WrappedMap 
@@ -55,6 +65,8 @@ export default function MapView(props: Omit<MapViewProps,'googleMapURL' | 'loadi
                 containerElement={<div style={{ height: '400px' }} />}
                 mapElement={<div style={{ height: '100%' }} />}
                 myPlaces={myPlaces}
+                defaultCenter={defaultCenter}
+                defaultZoom={defaultZoom}
             />
         </div>
     );

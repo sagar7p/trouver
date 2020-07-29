@@ -3,6 +3,7 @@ import { IoIosAddCircleOutline, IoIosGlobe, IoMdPerson } from 'react-icons/io';
 import { BsGrid } from 'react-icons/bs';
 import { BehaviorSubject } from 'rxjs';
 import { PageType } from '../../models/PageType';
+import Logo from '../../assets/trouver-logo.png';
 
 import '../../styles/header.css';
 
@@ -17,14 +18,14 @@ class Header extends React.Component<HeaderProps> {
         return (
             <div className="header-conatiner">
                 <div className="header-title">
-                    <div>
-                        <h1>Trouver</h1>
+                    <div className="image-box">
+                        <img className="logo" src={Logo} alt="trouver-logo"></img>
                     </div>
-                    <div style={{paddingTop: "5%"}}>
+                    <div style={{paddingTop: "3%"}}>
                         <button><IoMdPerson /></button>
                     </div>
                 </div>
-                <div style={{textAlign:"left", paddingLeft:"10%"}}>
+                <div className="toolbar">
                     <button><IoIosAddCircleOutline /></button>
                     <button onClick={() => this.changePage(PageType.GridView)}><BsGrid /></button>
                     <button onClick={() => this.changePage(PageType.MapView)}><IoIosGlobe /></button>
