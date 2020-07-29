@@ -10,11 +10,12 @@
 }
 
 .modal-content {
-    width: 500px;
-    height: 300px;
+    width: 800px;
+    height: 600px;
     background-color: white;
     border-radius: 4px;
     position: relative;
+    overflow: auto;
 }
 
 .close {
@@ -24,4 +25,27 @@
     font-size: 42px;
     transform: rotate(45deg);
     cursor: pointer;
+}
+
+.modal-content h2 {
+    text-align: left;
+    padding-left: 10%;
+}
+
+.modal-content img {
+    width: 80%;
+    height: 70%;
+}
+
+.map {
+    width: 80%;
+    height: 50%;
+    padding-left: 10%;
+}
+
+.details {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 5%;
+    text-align: center;
 }
