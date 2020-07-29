@@ -5,6 +5,7 @@ import { BehaviorSubject } from 'rxjs';
 import { PageType } from '../../models/PageType';
 
 import '../../styles/header.css';
+import { GoogleButton } from '../GoogleButton';
 
 export interface HeaderProps {
     
@@ -21,7 +22,8 @@ class Header extends React.Component<HeaderProps> {
                         <h1>Trouver</h1>
                     </div>
                     <div style={{paddingTop: "5%"}}>
-                        <button><IoMdPerson /></button>
+                        {/* <button><IoMdPerson /></button> */}
+                        <GoogleButton/>
                     </div>
                 </div>
                 <div style={{textAlign:"left", paddingLeft:"10%"}}>
