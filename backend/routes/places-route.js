@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const Place = require("../models/Place");
+const cors = require("cors");
 
 /**
  * URL: localhost:5001/api/places/
@@ -30,7 +31,7 @@ router.get("/", (req, res, next) => {
 }
  * Response: Newly added place object if successful
  */
-router.post("/add", (req, res, next) => {
+router.post("/add", cors(), (req, res, next) => {
   const {
     name,
     userId,
@@ -50,6 +51,11 @@ router.post("/add", (req, res, next) => {
     else res.json({ newPlace, msg: "place successfully saved!" });
   });
 });
+
+/**
+ * Handles option call for CORS if preflight is enabled
+ */
+router.options("/add", cors());
 
 /**
  * URL: localhost:5001/api/places/
