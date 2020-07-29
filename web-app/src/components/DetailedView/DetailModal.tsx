@@ -2,6 +2,9 @@ import React from 'react';
 import { Modal } from 'react-bootstrap';
 import { Place } from '../../models/Place';
 import { enableDetailView } from '../../App';
+import MapView from '../MapView/MapView';
+
+import '../../styles/detail-view.css';
 
 export interface DetailModalProps {
     place: Place | undefined;
@@ -10,14 +13,46 @@ export interface DetailModalProps {
 
 export class DetailModal extends React.Component<DetailModalProps> {
     render() {
-        return (
+        const { place } = this.props;
+        return place ? (
             <Modal show={this.props.showModal} onHide={()=> { this.onClose() }}>
                 <Modal.Header closeButton>
                 </Modal.Header>
                 <Modal.Body>
-                    Hello!
+                    <div>
+                        <h2>{place.name}</h2>
+                        <img src={place.image.url} alt={place.id}></img>
+                        <div className="map">
+                            <MapView myPlaces={[place]}/>
+                        </div>
+                        <div className="details">
+                            {
+                                place.elevation ? 
+                                    <div>
+                                        {place.elevation}
+                                    </div>
+                                : <div></div>
+                            }
+                            {
+                                place.trailLength ? 
+                                    <div>
+                                        {place.trailLength}
+                                    </div>
+                                : <div></div>
+                            }
+                            {
+                                place.weather ? 
+                                    <div>
+                                        {place.weather}
+                                    </div>
+                                : <div></div>
+                            }
+                        </div>
+                    </div>
                 </Modal.Body>
             </Modal>
+        ) : (
+            <div></div>
         );
     }
 
