@@ -8,6 +8,9 @@ import { Place } from './models/Place';
 import { places } from './MockData';
 import { BehaviorSubject } from 'rxjs';
 import { DetailView } from './components/DetailedView/DetailView';
+import { DetailModal } from './components/DetailedView/DetailModal';
+
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 export interface AppProps {
 }
@@ -75,7 +78,8 @@ class App extends React.Component<AppProps, AppState> {
           <div style={{width: "auto"}}>
             <Header />
             { page(this.state.currentPage) }
-            { this.state.showDetailView ? <DetailView place={this.state.detailViewPlace}/> : <div></div>}
+            <DetailModal place={this.state.detailViewPlace} showModal={this.state.showDetailView} />
+            {/* { this.state.showDetailView ? <DetailView place={this.state.detailViewPlace}/> : <div></div>} */}
           </div>
         </header>
       </div>
