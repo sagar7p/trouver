@@ -6,6 +6,8 @@ import { MapViewContainer } from './components/MapView/MapViewContainer';
 import { PageType } from './models/PageType';
 import { Place } from './models/Place';
 import { places } from './MockData';
+import { BehaviorSubject } from 'rxjs';
+import { DetailView } from './components/DetailedView/DetailView';
 
 export interface AppProps {
 }
@@ -13,14 +15,28 @@ export interface AppProps {
 export interface AppState {
   currentPage: PageType;
   placeObjects: Place[];
+  showDetailView: boolean;
+  detailViewPlace: Place | undefined;
 }
+
+export interface DetailViewData {
+  enableDetailView: boolean;
+  detailViewPlace: Place | undefined;
+}
+
+export const enableDetailView = new BehaviorSubject<DetailViewData>({
+  enableDetailView: false,
+  detailViewPlace: undefined
+});
 
 class App extends React.Component<AppProps, AppState> {
   constructor(props: AppProps) {
     super(props);
     this.state = {
       currentPage: PageType.GridView,
-      placeObjects: this.getPlaces() 
+      placeObjects: this.getPlaces(),
+      showDetailView: false,
+      detailViewPlace: undefined
     };
   }
 
@@ -29,6 +45,14 @@ class App extends React.Component<AppProps, AppState> {
       this.setState({
         ...this.state,
         currentPage: page
+      })
+    });
+
+    enableDetailView.subscribe((data: DetailViewData) => {
+      this.setState({
+        ...this.state,
+        showDetailView: data.enableDetailView,
+        detailViewPlace: data.detailViewPlace
       })
     });
   }
@@ -51,6 +75,7 @@ class App extends React.Component<AppProps, AppState> {
           <div style={{width: "auto"}}>
             <Header />
             { page(this.state.currentPage) }
+            { this.state.showDetailView ? <DetailView place={this.state.detailViewPlace}/> : <div></div>}
           </div>
         </header>
       </div>
@@ -60,6 +85,8 @@ class App extends React.Component<AppProps, AppState> {
   private getPlaces() {
     return places;
   }
+
+
 }
 
 export default App;
