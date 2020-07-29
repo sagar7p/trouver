@@ -72,7 +72,15 @@ export default class Popup extends Component<FormProps, FormState> {
 
     console.log("submitted " + JSON.stringify(payload));
 
-    alert("Successfully submitted");
+    const requestOptions = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+    };
+    fetch("http://localhost:5001/api/places/add", requestOptions)
+      .then((response) => response.json())
+      .then((data) => alert(data));
+
     return false;
   }
 
