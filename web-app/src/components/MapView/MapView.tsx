@@ -1,15 +1,23 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { GoogleMap, Marker, withGoogleMap, withScriptjs } from 'react-google-maps';
-import { places } from '../../MockData';
+import { Place } from '../../models/Place';
 
-function Map() {
+export interface MapViewProps {
+    myPlaces: Place[];
+    googleMapURL: string;
+    loadingElement: JSX.Element;
+    containerElement: JSX.Element;
+    mapElement: JSX.Element;
+}
+
+function Map(props: MapViewProps) {
     return (
         <GoogleMap
             defaultZoom={3}
             defaultCenter={{ lat: 45.4, lng: -75.7 }}
         >
             {
-                places.map((p) => (
+                props.myPlaces.map((p) => (
                     <Marker
                         key={p.id}
                         position={{
@@ -26,9 +34,11 @@ function Map() {
     );
 }
 
-const WrappedMap = withScriptjs(withGoogleMap(Map));
+const wrappedGoogleMap = withGoogleMap(Map);
+const WrappedMap = withScriptjs<MapViewProps>(wrappedGoogleMap);
 
-export default function MapView() {
+export default function MapView(props: Omit<MapViewProps,'googleMapURL' | 'loadingElement' | 'containerElement' | 'mapElement'>) {
+    const {myPlaces} = props;
     return (
         <div>
             <WrappedMap 
@@ -36,6 +46,7 @@ export default function MapView() {
                 loadingElement={<div style={{ height: '100%' }} />}
                 containerElement={<div style={{ height: '400px' }} />}
                 mapElement={<div style={{ height: '100%' }} />}
+                myPlaces={myPlaces}
             />
         </div>
     );
