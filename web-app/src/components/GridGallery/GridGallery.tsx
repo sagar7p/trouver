@@ -22,13 +22,13 @@ export interface GridGalleryProps {
 }
 
 export interface GridGalleryState {
-    
+
 }
 
 export class GridGallery extends React.Component<GridGalleryProps, GridGalleryState> {
     constructor(props: GridGalleryProps) {
         super(props);
-        this.state = {photoObjects: []};
+        this.state = { photoObjects: [] };
     }
 
     render() {

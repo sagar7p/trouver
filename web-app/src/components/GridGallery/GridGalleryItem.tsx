@@ -33,7 +33,7 @@ export class GridGalleryItem extends React.Component<GridGalleryItemProps, GridG
 
     render() {
         if (this.state.width && this.state.height) {
-            const galleryContainerClassName = 'gallery-container ' + this.state.width + ' ' + this.state.height; 
+            const galleryContainerClassName = 'gallery-container ' + this.state.width + ' ' + this.state.height;
             return (
                 <div className={galleryContainerClassName}>
                     <div className="gallery-item" onClick={() => this.onGalleryItemClick()}>
@@ -50,6 +50,7 @@ export class GridGalleryItem extends React.Component<GridGalleryItemProps, GridG
     }
 
     private onGalleryItemClick() {
+        console.log(this.props.place);
         enableDetailView.next({
             enableDetailView: true,
             detailViewPlace: this.props.place
@@ -57,7 +58,7 @@ export class GridGalleryItem extends React.Component<GridGalleryItemProps, GridG
     }
 
     private convertWidth(width: PhotoSize): string {
-        switch(width) {
+        switch (width) {
             case PhotoSize.Small: {
                 return 'w-1';
             }
@@ -71,7 +72,7 @@ export class GridGalleryItem extends React.Component<GridGalleryItemProps, GridG
     }
 
     private convertHeight(height: PhotoSize): string {
-        switch(height) {
+        switch (height) {
             case PhotoSize.Small: {
                 return 'h-1';
             }
@@ -87,9 +88,9 @@ export class GridGalleryItem extends React.Component<GridGalleryItemProps, GridG
     private placeToPhotoObject(place: Place): PhotoObject {
         const img = new Image();
         img.src = place.image.url;
-        
-        const width = this.dimensionToPhotoSize(place.image.width);
-        const height = this.dimensionToPhotoSize(place.image.height);
+
+        const width = this.dimensionToPhotoSizeWidth(place.image.width);
+        const height = this.dimensionToPhotoSizeHeight(place.image.height);
 
         return {
             width,
@@ -99,16 +100,24 @@ export class GridGalleryItem extends React.Component<GridGalleryItemProps, GridG
         };
     }
 
-    private dimensionToPhotoSize(dimension: number): PhotoSize {
-        if (dimension > 0 && dimension < 500) {
-            return PhotoSize.Small
-        } else if (dimension > 501 && dimension < 1000) {
-            return PhotoSize.Medium
-        } else if (dimension > 1001) {
-            return PhotoSize.Large
+    private dimensionToPhotoSizeWidth(dimension: number): PhotoSize {
+        if (dimension > 0 && dimension < 700) {
+            return PhotoSize.Small;
+        } else if (dimension >= 700 && dimension < 900) {
+            return PhotoSize.Medium;
+        } else if (dimension >= 900) {
+            return PhotoSize.Large;
         } else {
             // TODO: This is an error scenario. We need to return undefined here and handle accordingly
-            return PhotoSize.Small
+            return PhotoSize.Small;
+        }
+    }
+
+    private dimensionToPhotoSizeHeight(dimension: number): PhotoSize {
+        if (dimension > 0 && dimension < 700) {
+            return PhotoSize.Small;
+        } else {
+            return PhotoSize.Medium;
         }
     }
 }
