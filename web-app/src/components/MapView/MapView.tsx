@@ -1,6 +1,7 @@
 import React from 'react';
 import { GoogleMap, Marker, withGoogleMap, withScriptjs } from 'react-google-maps';
 import { Place } from '../../models/Place';
+import { enableDetailView } from '../../App';
 
 export interface MapViewProps {
     myPlaces: Place[];
@@ -25,13 +26,20 @@ function Map(props: MapViewProps) {
                             lng: p.location.coordinates[1],
                         }}
                         onClick={() => {
-                            console.log(p);
+                            onMarkerClick(p);
                         }}
                     />
                 ))
             }
         </GoogleMap>
     );
+}
+
+function onMarkerClick(place: Place) {
+    enableDetailView.next({
+        enableDetailView: true,
+        detailViewPlace: place
+    })
 }
 
 const wrappedGoogleMap = withGoogleMap(Map);
