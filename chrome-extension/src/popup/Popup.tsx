@@ -72,14 +72,29 @@ export default class Popup extends Component<FormProps, FormState> {
 
     console.log("submitted " + JSON.stringify(payload));
 
-    const requestOptions = {
+    fetch("http://localhost:5001/api/places/add", {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: {
+        "Content-Type": "application/json",
+      },
       body: JSON.stringify(payload),
-    };
-    fetch("http://localhost:5001/api/places/add", requestOptions)
-      .then((response) => response.json())
-      .then((data) => alert(data));
+    })
+      .then(async (response) => {
+        const data = await response.json();
+
+        // check for error response
+        if (!response.ok) {
+          // get error message from body or default to response status
+          const error = (data && data.message) || response.status;
+          alert(error);
+        } else {
+          alert(data.message);
+        }
+      })
+      .catch((error) => {
+        console.log("error on post call");
+        alert(error);
+      });
 
     return false;
   }
