@@ -88,7 +88,7 @@ export default class Popup extends Component<FormProps, FormState> {
           const error = (data && data.message) || response.status;
           alert(error);
         } else {
-          alert(data.message);
+          alert(data.msg);
         }
       })
       .catch((error) => {
