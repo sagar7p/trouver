@@ -1,0 +1,29 @@
+.header-container {
+    padding-left: 10%;
+    padding-right: 10%;
+}
+
+button {
+    background-color: white;
+    border: none;
+    color: darkgray;
+    padding: 12px 12px;
+    font-size: 32px;
+    cursor: pointer;
+    border-radius: 50%;
+    border: white;
+    opacity: 0.6;
+    transition: 0.3s;
+    outline: 0;
+}
+
+button:hover {
+    opacity: 1;
+}
+
+.header-title {
+    display: flex;
+    justify-content: space-between;
+    padding-left: 10%;
+    padding-right: 10%;
+}
