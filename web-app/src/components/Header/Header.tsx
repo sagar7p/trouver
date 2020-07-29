@@ -8,46 +8,46 @@ import Logo from "../../assets/trouver-logo.png";
 import "../../styles/header.css";
 import GoogleBtn from "../GoogleButton";
 
-export interface HeaderProps {}
+export interface HeaderProps { }
 
 const currentPage = new BehaviorSubject(PageType.LandingView);
 
 class Header extends React.Component<HeaderProps> {
-  constructor(props: HeaderProps) {
-    super(props);
-  }
+    constructor(props: HeaderProps) {
+        super(props);
+    }
 
-  render() {
-    return (
-      <div className="header-conatiner">
-        <div className="header-title">
-          <div className="image-box">
-            <img className="logo" src={Logo} alt="trouver-logo"></img>
-          </div>
-          <div style={{ paddingTop: "3%" }}>
-            <button>
-              <IoMdPerson />
-            </button>
-          </div>
-        </div>
-        <div className="toolbar">
-          <button>
-            <IoIosAddCircleOutline />
-          </button>
-          <button onClick={() => this.changePage(PageType.GridView)}>
-            <BsGrid />
-          </button>
-          <button onClick={() => this.changePage(PageType.MapView)}>
-            <IoIosGlobe />
-          </button>
-        </div>
-      </div>
-    );
-  }
+    render() {
+        return (
+            <div className="header-conatiner">
+                <div className="header-title">
+                    <div className="image-box">
+                        <img className="logo" src={Logo} alt="trouver-logo"></img>
+                    </div>
+                    <div style={{ paddingTop: "3%" }}>
+                        <button>
+                            <IoMdPerson />
+                        </button>
+                    </div>
+                </div>
+                <div className="toolbar">
+                    <button>
+                        <IoIosAddCircleOutline />
+                    </button>
+                    <button onClick={() => this.changePage(PageType.GridView)}>
+                        <BsGrid />
+                    </button>
+                    <button onClick={() => this.changePage(PageType.MapView)}>
+                        <IoIosGlobe />
+                    </button>
+                </div>
+            </div>
+        );
+    }
 
-  private changePage(newPage: PageType) {
-    currentPage.next(newPage);
-  }
+    private changePage(newPage: PageType) {
+        currentPage.next(newPage);
+    }
 }
 
 export { Header, currentPage };

@@ -1,12 +1,12 @@
 .App {
-  text-align: center;
+  /* text-align: center; */
 }
 
-body {
+/* body {
   margin: 0;
-}
+} */
 
-.App-header {
+/* .App-header {
   background-color: white;
   min-height: 100vh;
   display: flex;
@@ -15,13 +15,4 @@ body {
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: black;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
+} */
