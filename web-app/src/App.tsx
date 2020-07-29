@@ -7,7 +7,6 @@ import { PageType } from './models/PageType';
 import { Place } from './models/Place';
 import { places } from './MockData';
 import { BehaviorSubject } from 'rxjs';
-import { DetailView } from './components/DetailedView/DetailView';
 import { DetailModal } from './components/DetailedView/DetailModal';
 
 import 'bootstrap/dist/css/bootstrap.min.css';

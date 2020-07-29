@@ -17,12 +17,14 @@ export class DetailModal extends React.Component<DetailModalProps> {
         return place ? (
             <Modal show={this.props.showModal} onHide={()=> { this.onClose() }}>
                 <Modal.Header closeButton>
+                    <Modal.Title>{place.name}</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <div>
-                        <h2>{place.name}</h2>
-                        <img src={place.image.url} alt={place.id}></img>
-                        <div className="map">
+                        <div className="image-block">
+                            <img src={place.image.url} alt={place.id}></img>
+                        </div>
+                        <div className="map-block">
                             <MapView myPlaces={[place]}/>
                         </div>
                         <div className="details">
