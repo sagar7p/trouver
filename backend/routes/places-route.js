@@ -6,12 +6,13 @@ const cors = require("cors");
  * URL: localhost:5001/api/places/
  * Response: Array of all Place
  */
-router.get("/", (req, res, next) => {
+router.get("/", cors(), (req, res, next) => {
   Place.find({}, (err, places) => {
     if (err) next(err);
     else res.json(places);
   });
 });
+router.options("/", cors());
 
 /**
  * URL: localhost:5001/api/places/add
@@ -36,19 +37,28 @@ router.post("/add", cors(), (req, res, next) => {
     name,
     userId,
     image,
-    coordinates: { latitude, longitude },
+    coordinates: {
+      latitude,
+      longitude
+    },
   } = req.body;
   const newPlace = new Place({
     name,
     userId,
     dateCreated: new Date(),
     image,
-    location: { type: "Point", coordinates: [latitude, longitude] },
+    location: {
+      type: "Point",
+      coordinates: [latitude, longitude]
+    },
   });
   res.setHeader("Access-Control-Allow-Origin", "*");
   newPlace.save((err) => {
     if (err) next(err);
-    else res.json({ newPlace, msg: "place successfully saved!" });
+    else res.json({
+      newPlace,
+      msg: "place successfully saved!"
+    });
   });
 });
 

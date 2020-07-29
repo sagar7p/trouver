@@ -1,0 +1,38 @@
+.bg-modal {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.7);
+    position: absolute;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.image-block {
+    text-align: center;
+}
+
+img {
+    width: 80%;
+    height: 70%;
+}
+
+.map-block {
+    text-align: center;
+    padding-left: 10%;
+    padding-right: 10%;
+    padding-top: 5%;
+}
+
+.map {
+    width: 80%;
+    height: 50%;
+}
+
+.details {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 5%;
+    text-align: center;
+}

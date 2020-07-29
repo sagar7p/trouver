@@ -4,14 +4,17 @@ import { places } from '../../MockData';
 
 import '../../styles/map-view.css';
 import '../../styles/grid-gallery.css';
+import { Place } from '../../models/Place';
 
-export class MapViewContainer extends React.Component {
+export interface MapViewContainerProps {
+    places: Place[];
+}
+
+export class MapViewContainer extends React.Component<MapViewContainerProps> {
     render() {
         return (
             <div className="map-container">
-                <div className="box">
-                    <MapView myPlaces={places}/>
-                </div>
+                <MapView myPlaces={this.props.places} />
             </div>
         );
     }
