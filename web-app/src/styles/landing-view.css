@@ -1,14 +1,14 @@
-.bg {
+/* .bg {
   margin: 0;
-  /* The image used */
+  The image used
   background-image: url("https://www.pixelstalk.net/wp-content/uploads/images1/Mount-Rainier-National-Park-Washington-United-States-Wallpaper-HD-1920x1200.jpg");
 
-  /* Full height */
+  Full height
   height: 1000px;
   margin-top: -100px;
   width: 100vw;
 
-  /* Center and scale the image nicely */
+  Center and scale the image nicely
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -22,4 +22,4 @@
   transform: translate(-50%, -50%);
   width: 500px;
   height: 200px;
-}
+} */

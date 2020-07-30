@@ -10,8 +10,7 @@ import { DetailModal } from "./components/DetailedView/DetailModal";
 import { PlacesService } from "./services/places.service";
 
 import "bootstrap/dist/css/bootstrap.min.css";
-import GoogleBtn, { currentId } from "./components/GoogleButton";
-import LandingView from "./components/LandingView/LandingView";
+import LandingView, { currentId } from "./components/LandingView/LandingView";
 
 export interface AppProps { }
 
@@ -125,9 +124,6 @@ class App extends React.Component<AppProps, AppState> {
       <div className="App">
         <header className="App-header">
           <div>
-            <div>
-              <GoogleBtn />
-            </div>
             {this.state.isLoading ? (
               <div>Loading...</div>
             ) : (
