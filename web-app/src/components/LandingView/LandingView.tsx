@@ -2,7 +2,7 @@ import React from "react";
 import { GoogleLogin, GoogleLoginResponse, GoogleLoginResponseOffline } from 'react-google-login';
 import { BehaviorSubject } from 'rxjs';
 
-import Logo from "../../assets/trouver-logo.png";
+import Logo from "../../assets/trouver-logo-transparent.png";
 import "../../styles/landing-view.css";
 
 export interface LandingViewProps { }
@@ -20,7 +20,7 @@ export default class LandingView extends React.Component<LandingViewProps> {
           <div className="image-block">
             <img className="image-logo" src={Logo} alt="trouver-logo"></img>
           </div>
-          <div className="login-btn">
+          <div className="login-btn-block">
             <GoogleLogin
               clientId={CLIENT_ID}
               buttonText="Login"
@@ -29,6 +29,9 @@ export default class LandingView extends React.Component<LandingViewProps> {
               cookiePolicy={"single_host_origin"}
               isSignedIn={true}
               responseType="code,token"
+              render={renderProps => (
+                <button className="login-btn" onClick={renderProps.onClick} disabled={renderProps.disabled}>Sign In with Google</button>
+              )}
             />
           </div>
         </div>

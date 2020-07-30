@@ -1,31 +1,5 @@
-/* .bg {
-  margin: 0;
-  The image used
-  background-image: url("https://www.pixelstalk.net/wp-content/uploads/images1/Mount-Rainier-National-Park-Washington-United-States-Wallpaper-HD-1920x1200.jpg");
-
-  Full height
-  height: 1000px;
-  margin-top: -100px;
-  width: 100vw;
-
-  Center and scale the image nicely
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  justify-content: center;
-}
-
-.image-logo {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 500px;
-  height: 200px;
-} */
-
 .bg {
-  background-image: url("https://www.pixelstalk.net/wp-content/uploads/images1/Mount-Rainier-National-Park-Washington-United-States-Wallpaper-HD-1920x1200.jpg");
+  background-image: url("https://www.lefthudson.com/wp-content/uploads/2019/11/minimalist-mountain-wallpaper-hd-best-of-minimalism-landscape-digital-art-mountains-wallpaper-and-background-jpg-157-for-you-of-minimalist-mountain-wallpaper-hd.jpg");
   height: 100%;
   width: 100%;
 
@@ -38,10 +12,10 @@
 
 .dialog-div {
   position: relative;
-  margin-top: 17%;
-  margin-left: 35%;
-  margin-right: 35%;
-  background-color: white;
+  margin-top: 7%;
+  margin-left: 30%;
+  margin-right: 30%;
+  background-color: transparent;
 }
 
 .image-block {
@@ -54,8 +28,25 @@
   width: 60%;
 }
 
-.login-btn {
+.login-btn-block {
   text-align: center;
   padding-top: 7%;
   padding-bottom: 7%;
+}
+
+.login-btn {
+  background-color: rgba(255, 255, 255, 0.4);
+  width: 30%;
+  height: 30%;
+  border-style: solid;
+  border-color: black;
+  font-weight: bold;
+  color: black;
+}
+
+.login-btn:hover {
+  box-shadow: 0 5px 15px rgba(145, 92, 182, .4);
+  background-color: white;
+  opacity: 1;
+  transition: 0.6s;
 }
