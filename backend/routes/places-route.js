@@ -3,16 +3,29 @@ const Place = require("../models/Place");
 const cors = require("cors");
 
 /**
- * URL: localhost:5001/api/places/
+ * URL: localhost:5001/api/places?userId="userId"
  * Response: Array of all Place
  */
 router.get("/", cors(), (req, res, next) => {
-  Place.find({}, (err, places) => {
+  const { userId } = req.query;
+  Place.find({ userId: userId }, (err, places) => {
+    if (err) next(err);
+    else res.json(places.sort((a, b) => a.dateCreated < b.dateCreated));
+  });
+});
+router.options("/", cors());
+
+/**
+ * URL: localhost:5001/api/places?placeId="placeId"
+ * Response: Deletes places and responds with array of deleted places
+ */
+router.delete("/", cors(), (req, res, next) => {
+  const { placeId } = req.query;
+  Place.delete({ _id: id }, (err, places) => {
     if (err) next(err);
     else res.json(places);
   });
 });
-router.options("/", cors());
 
 /**
  * URL: localhost:5001/api/places/add
@@ -37,10 +50,7 @@ router.post("/add", cors(), (req, res, next) => {
     name,
     userId,
     image,
-    coordinates: {
-      latitude,
-      longitude
-    },
+    coordinates: { latitude, longitude },
   } = req.body;
   const newPlace = new Place({
     name,
@@ -49,16 +59,17 @@ router.post("/add", cors(), (req, res, next) => {
     image,
     location: {
       type: "Point",
-      coordinates: [latitude, longitude]
+      coordinates: [latitude, longitude],
     },
   });
   res.setHeader("Access-Control-Allow-Origin", "*");
   newPlace.save((err) => {
     if (err) next(err);
-    else res.json({
-      newPlace,
-      msg: "place successfully saved!"
-    });
+    else
+      res.json({
+        newPlace,
+        msg: "place successfully saved!",
+      });
   });
 });
 
