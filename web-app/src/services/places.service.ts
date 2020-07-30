@@ -23,11 +23,4 @@ export class PlacesService {
             });
         });
     }
-
-    // private convertDataToPlacesData(data: JSON): Place[] {
-    //     const placesData: Place[] = [];
-    //     data.array.forEach(element => {
-
-    //     });
-    // }
 }

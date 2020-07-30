@@ -6,17 +6,12 @@ import { PageType } from "../../models/PageType";
 import Logo from "../../assets/trouver-logo.png";
 
 import "../../styles/header.css";
-import GoogleBtn from "../GoogleButton";
 
 export interface HeaderProps { }
 
 const currentPage = new BehaviorSubject(PageType.LandingView);
 
 class Header extends React.Component<HeaderProps> {
-    constructor(props: HeaderProps) {
-        super(props);
-    }
-
     render() {
         return (
             <div className="header-box">
