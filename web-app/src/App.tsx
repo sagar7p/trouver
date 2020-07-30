@@ -10,7 +10,7 @@ import { DetailModal } from "./components/DetailedView/DetailModal";
 import { PlacesService } from "./services/places.service";
 
 import "bootstrap/dist/css/bootstrap.min.css";
-import { currentId } from "./components/GoogleButton";
+import GoogleBtn, { currentId } from "./components/GoogleButton";
 
 export interface AppProps {}
 
@@ -20,6 +20,7 @@ export interface AppState {
   showDetailView: boolean;
   detailViewPlace: Place | undefined;
   isLoading: boolean;
+  userId: string | undefined;
 }
 
 export interface LoadPlacesData {
@@ -38,7 +39,7 @@ export const enableDetailView = new BehaviorSubject<DetailViewData>({
 });
 
 export const loadedPlaces = new BehaviorSubject<LoadPlacesData>({
-  completed: false,
+  completed: true,
   placesArray: [],
 });
 
@@ -50,7 +51,8 @@ class App extends React.Component<AppProps, AppState> {
       placeObjects: [],
       showDetailView: false,
       detailViewPlace: undefined,
-      isLoading: true,
+      isLoading: false,
+      userId: undefined,
     };
   }
 
@@ -78,17 +80,25 @@ class App extends React.Component<AppProps, AppState> {
       });
     });
 
-    currentId.subscribe(async (userId: string | undefined) => {
-      if (userId) {
-        await PlacesService.getPlaces(userId);
-        currentPage.next(PageType.GridView);
-      } else {
-        loadedPlaces.next({
-          completed: true,
-          placesArray: [],
-        });
-        currentPage.next(PageType.LandingView);
-      }
+    currentId.subscribe((userId: string | undefined) => {
+      this.setState(
+        {
+          ...this.state,
+          userId: userId,
+        },
+        async () => {
+          if (userId) {
+            loadedPlaces.next({
+              completed: false,
+              placesArray: [],
+            });
+            await PlacesService.getPlaces(userId);
+            currentPage.next(PageType.GridView);
+          } else {
+            currentPage.next(PageType.LandingView);
+          }
+        }
+      );
     });
   }
 
@@ -114,11 +124,12 @@ class App extends React.Component<AppProps, AppState> {
       <div className="App">
         <header className="App-header">
           <div>
-            <Header />
+            <GoogleBtn />
             {this.state.isLoading ? (
               <div>Loading...</div>
             ) : (
               <div>
+                {this.state.userId ? <Header /> : null}
                 {page(this.state.currentPage)}
                 <DetailModal
                   place={this.state.detailViewPlace}

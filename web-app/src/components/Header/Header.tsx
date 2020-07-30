@@ -28,7 +28,6 @@ class Header extends React.Component<HeaderProps> {
             <button>
               <IoMdPerson />
             </button>
-            <GoogleBtn />
           </div>
         </div>
         <div className="toolbar">
