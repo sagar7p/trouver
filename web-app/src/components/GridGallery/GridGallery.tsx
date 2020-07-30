@@ -33,7 +33,7 @@ export class GridGallery extends React.Component<GridGalleryProps, GridGallerySt
 
     render() {
         return (
-            <div className="container">
+            <div className="grid-container">
                 {
                     this.props.places ? this.props.places.map((p) => (
                         <GridGalleryItem place={p} />

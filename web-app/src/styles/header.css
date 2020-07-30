@@ -1,4 +1,4 @@
-.foo {
+.header-box {
     width: 100%;
     padding-left: 10%;
     padding-right: 10%;
@@ -12,8 +12,8 @@
 
 .toolbar {
     text-align: left;
-    margin-top: 30px;
-    margin-bottom: 30px;
+    margin-top: 0%;
+    margin-bottom: 2%;
 }
 
 .image-box {
@@ -25,7 +25,8 @@
     height: 100%;
 }
 
-button {
+.toolbar-button {
+    outline: 0;
     background-color: white;
     border: none;
     color: darkgray;
@@ -35,51 +36,8 @@ button {
     border: white;
     opacity: 0.6;
     transition: 0.3s;
-    outline: 0;
 }
 
 button:hover {
     opacity: 1;
 }
-
-/* .header-container {
-    padding-left: auto;
-}
-
-.header-title {
-    display: flex;
-    justify-content: space-between;
-}
-
-.toolbar {
-    text-align: left;
-    margin-top: 30px;
-    margin-bottom: 30px;
-}
-
-.image-box {
-    text-align: left;
-}
-
-.logo {
-    width: 20%;
-    height: 100%;
-}
-
-button {
-    background-color: white;
-    border: none;
-    color: darkgray;
-    padding: 12px 12px;
-    font-size: 32px;
-    cursor: pointer;
-    border-radius: 50%;
-    border: white;
-    opacity: 0.6;
-    transition: 0.3s;
-    outline: 0;
-}
-
-button:hover {
-    opacity: 1;
-} */

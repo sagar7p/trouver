@@ -12,7 +12,7 @@ import { PlacesService } from "./services/places.service";
 import "bootstrap/dist/css/bootstrap.min.css";
 import GoogleBtn, { currentId } from "./components/GoogleButton";
 
-export interface AppProps {}
+export interface AppProps { }
 
 export interface AppState {
   currentPage: PageType;
@@ -128,15 +128,15 @@ class App extends React.Component<AppProps, AppState> {
             {this.state.isLoading ? (
               <div>Loading...</div>
             ) : (
-              <div>
-                {this.state.userId ? <Header /> : null}
-                {page(this.state.currentPage)}
-                <DetailModal
-                  place={this.state.detailViewPlace}
-                  showModal={this.state.showDetailView}
-                />
-              </div>
-            )}
+                <div>
+                  {this.state.userId ? <Header /> : null}
+                  {page(this.state.currentPage)}
+                  <DetailModal
+                    place={this.state.detailViewPlace}
+                    showModal={this.state.showDetailView}
+                  />
+                </div>
+              )}
           </div>
         </header>
       </div>

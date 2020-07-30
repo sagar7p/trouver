@@ -19,7 +19,7 @@ class Header extends React.Component<HeaderProps> {
 
     render() {
         return (
-            <div className="header-conatiner">
+            <div className="header-box">
                 <div className="header-title">
                     <div className="image-box">
                         <img className="logo" src={Logo} alt="trouver-logo"></img>
@@ -46,6 +46,21 @@ class Header extends React.Component<HeaderProps> {
     }
 
     private changePage(newPage: PageType) {
+        switch (newPage) {
+            case PageType.GridView:
+                const gridBtn = document.getElementById('GridButton');
+                if (gridBtn) {
+                    gridBtn.style.opacity = '1';
+                }
+                break;
+            case PageType.MapView:
+                const mapBtn = document.getElementById('GridButton');
+                if (mapBtn) {
+                    mapBtn.style.opacity = '1';
+                }
+                break;
+        }
+
         currentPage.next(newPage);
     }
 }
