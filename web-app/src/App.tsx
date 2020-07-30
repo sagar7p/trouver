@@ -94,8 +94,6 @@ class App extends React.Component<AppProps, AppState> {
             });
             await PlacesService.getPlaces(userId);
             currentPage.next(PageType.GridView);
-          } else {
-            currentPage.next(PageType.LandingView);
           }
         }
       );
@@ -113,8 +111,6 @@ class App extends React.Component<AppProps, AppState> {
               <MapViewContainer places={this.state.placeObjects} />;
             </div>
           );
-        case PageType.LandingView:
-          return <LandingView />;
         default:
           return <GridGalleryContainer places={this.state.placeObjects} />;
       }
@@ -123,20 +119,26 @@ class App extends React.Component<AppProps, AppState> {
     return (
       <div className="App">
         <header className="App-header">
-          <div>
-            {this.state.isLoading ? (
-              <div>Loading...</div>
+          {
+            this.state.userId ? (
+              <div>
+                {this.state.isLoading ? (
+                  <div>Loading...</div>
+                ) : (
+                    <div>
+                      {this.state.userId ? <Header /> : null}
+                      {page(this.state.currentPage)}
+                      <DetailModal
+                        place={this.state.detailViewPlace}
+                        showModal={this.state.showDetailView}
+                      />
+                    </div>
+                  )}
+              </div>
             ) : (
-                <div>
-                  {this.state.userId ? <Header /> : null}
-                  {page(this.state.currentPage)}
-                  <DetailModal
-                    place={this.state.detailViewPlace}
-                    showModal={this.state.showDetailView}
-                  />
-                </div>
-              )}
-          </div>
+                <LandingView />
+              )
+          }
         </header>
       </div>
     );

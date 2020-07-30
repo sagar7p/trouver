@@ -23,3 +23,39 @@
   width: 500px;
   height: 200px;
 } */
+
+.bg {
+  background-image: url("https://www.pixelstalk.net/wp-content/uploads/images1/Mount-Rainier-National-Park-Washington-United-States-Wallpaper-HD-1920x1200.jpg");
+  height: 100%;
+  width: 100%;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+}
+
+.dialog-div {
+  position: relative;
+  margin-top: 17%;
+  margin-left: 35%;
+  margin-right: 35%;
+  background-color: white;
+}
+
+.image-block {
+  text-align: center;
+  padding-top: 5%;
+}
+
+.image-logo {
+  height: 60%;
+  width: 60%;
+}
+
+.login-btn {
+  text-align: center;
+  padding-top: 7%;
+  padding-bottom: 7%;
+}

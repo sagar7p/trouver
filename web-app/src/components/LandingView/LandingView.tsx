@@ -16,9 +16,11 @@ export default class LandingView extends React.Component<LandingViewProps> {
   render() {
     return (
       <div className="bg">
-        <div>
-          <img className="image-logo" src={Logo} alt="trouver-logo"></img>
-          <div>
+        <div className="dialog-div">
+          <div className="image-block">
+            <img className="image-logo" src={Logo} alt="trouver-logo"></img>
+          </div>
+          <div className="login-btn">
             <GoogleLogin
               clientId={CLIENT_ID}
               buttonText="Login"
