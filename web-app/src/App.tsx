@@ -125,7 +125,7 @@ class App extends React.Component<AppProps, AppState> {
       <div className="App">
         <header className="App-header">
           <div>
-            <div className="button">
+            <div>
               <GoogleBtn />
             </div>
             {this.state.isLoading ? (
