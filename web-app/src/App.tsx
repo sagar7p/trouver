@@ -11,6 +11,7 @@ import { PlacesService } from "./services/places.service";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import GoogleBtn, { currentId } from "./components/GoogleButton";
+import LandingView from "./components/LandingView/LandingView";
 
 export interface AppProps { }
 
@@ -114,7 +115,7 @@ class App extends React.Component<AppProps, AppState> {
             </div>
           );
         case PageType.LandingView:
-          return <div>Landing Page</div>;
+          return <LandingView />;
         default:
           return <GridGalleryContainer places={this.state.placeObjects} />;
       }
@@ -124,7 +125,9 @@ class App extends React.Component<AppProps, AppState> {
       <div className="App">
         <header className="App-header">
           <div>
-            <GoogleBtn />
+            <div className="button">
+              <GoogleBtn />
+            </div>
             {this.state.isLoading ? (
               <div>Loading...</div>
             ) : (
