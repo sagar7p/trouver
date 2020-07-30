@@ -22,18 +22,18 @@ export interface GridGalleryProps {
 }
 
 export interface GridGalleryState {
-    
+
 }
 
 export class GridGallery extends React.Component<GridGalleryProps, GridGalleryState> {
     constructor(props: GridGalleryProps) {
         super(props);
-        this.state = {photoObjects: []};
+        this.state = { photoObjects: [] };
     }
 
     render() {
         return (
-            <div className="container">
+            <div className="grid-container">
                 {
                     this.props.places ? this.props.places.map((p) => (
                         <GridGalleryItem place={p} />
