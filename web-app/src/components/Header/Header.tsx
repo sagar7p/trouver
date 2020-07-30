@@ -12,10 +12,6 @@ export interface HeaderProps { }
 const currentPage = new BehaviorSubject(PageType.LandingView);
 
 class Header extends React.Component<HeaderProps> {
-    constructor(props: HeaderProps) {
-        super(props);
-    }
-
     render() {
         return (
             <div className="header-box">
