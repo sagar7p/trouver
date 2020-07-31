@@ -1,0 +1,52 @@
+.bg {
+  background-image: url("https://www.lefthudson.com/wp-content/uploads/2019/11/minimalist-mountain-wallpaper-hd-best-of-minimalism-landscape-digital-art-mountains-wallpaper-and-background-jpg-157-for-you-of-minimalist-mountain-wallpaper-hd.jpg");
+  height: 100%;
+  width: 100%;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+}
+
+.dialog-div {
+  position: relative;
+  margin-top: 7%;
+  margin-left: 30%;
+  margin-right: 30%;
+  background-color: transparent;
+}
+
+.image-block {
+  text-align: center;
+  padding-top: 5%;
+}
+
+.image-logo {
+  height: 60%;
+  width: 60%;
+}
+
+.login-btn-block {
+  text-align: center;
+  padding-top: 7%;
+  padding-bottom: 7%;
+}
+
+.login-btn {
+  background-color: rgba(255, 255, 255, 0.4);
+  width: 30%;
+  height: 30%;
+  border-style: solid;
+  border-color: black;
+  font-weight: bold;
+  color: black;
+}
+
+.login-btn:hover {
+  box-shadow: 0 5px 15px rgba(145, 92, 182, .4);
+  background-color: white;
+  opacity: 1;
+  transition: 0.6s;
+}

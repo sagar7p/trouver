@@ -10,7 +10,7 @@ import { DetailModal } from "./components/DetailedView/DetailModal";
 import { PlacesService } from "./services/places.service";
 
 import "bootstrap/dist/css/bootstrap.min.css";
-import GoogleBtn, { currentId } from "./components/GoogleButton";
+import LandingView, { currentId } from "./components/LandingView/LandingView";
 
 export interface AppProps { }
 
@@ -94,8 +94,6 @@ class App extends React.Component<AppProps, AppState> {
             });
             await PlacesService.getPlaces(userId);
             currentPage.next(PageType.GridView);
-          } else {
-            currentPage.next(PageType.LandingView);
           }
         }
       );
@@ -113,8 +111,6 @@ class App extends React.Component<AppProps, AppState> {
               <MapViewContainer places={this.state.placeObjects} />;
             </div>
           );
-        case PageType.LandingView:
-          return <div>Landing Page</div>;
         default:
           return <GridGalleryContainer places={this.state.placeObjects} />;
       }
@@ -123,21 +119,26 @@ class App extends React.Component<AppProps, AppState> {
     return (
       <div className="App">
         <header className="App-header">
-          <div>
-            <GoogleBtn />
-            {this.state.isLoading ? (
-              <div>Loading...</div>
+          {
+            this.state.userId ? (
+              <div>
+                {this.state.isLoading ? (
+                  <div>Loading...</div>
+                ) : (
+                    <div>
+                      {this.state.userId ? <Header /> : null}
+                      {page(this.state.currentPage)}
+                      <DetailModal
+                        place={this.state.detailViewPlace}
+                        showModal={this.state.showDetailView}
+                      />
+                    </div>
+                  )}
+              </div>
             ) : (
-                <div>
-                  {this.state.userId ? <Header /> : null}
-                  {page(this.state.currentPage)}
-                  <DetailModal
-                    place={this.state.detailViewPlace}
-                    showModal={this.state.showDetailView}
-                  />
-                </div>
-              )}
-          </div>
+                <LandingView />
+              )
+          }
         </header>
       </div>
     );
